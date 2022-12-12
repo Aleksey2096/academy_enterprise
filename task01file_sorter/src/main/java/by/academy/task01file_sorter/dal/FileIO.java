@@ -21,8 +21,8 @@ public final class FileIO {
 	public void writeFile(final URL outputURL, final String outputString) throws DalException {
 		try (PrintWriter writer = new PrintWriter(outputURL.getPath());) {
 			writer.write(outputString);
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
+		} catch (FileNotFoundException e) {
+			throw new DalException(e);
 		}
 	}
 }
