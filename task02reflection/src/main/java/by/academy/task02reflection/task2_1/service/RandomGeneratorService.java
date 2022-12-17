@@ -15,7 +15,7 @@ public class RandomGeneratorService {
 	}
 
 	public static int getRandomRobotPartsNumber() {
-		return RANDOM.nextInt(MAX_RANDOM_ROBOT_PARTS_NUMBER - MIN_RANDOM_ROBOT_PARTS_NUMBER)
+		return RANDOM.nextInt(MAX_RANDOM_ROBOT_PARTS_NUMBER - MIN_RANDOM_ROBOT_PARTS_NUMBER + 1)
 				+ MIN_RANDOM_ROBOT_PARTS_NUMBER;
 	}
 }
