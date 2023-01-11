@@ -19,114 +19,114 @@ import org.junit.jupiter.api.TestFactory;
 import by.academy.task04sql.entity.Person;
 
 public class PersonCollectionUtilServiceTest {
-	private static Collection<Person> testPeople;
+	private static Collection<Person> people;
 	private static Collection<Person> sortedPeople;
 	private static Collection<Person> distinctPeople;
 	private static Collection<String> surnameNameList;
 
 	@BeforeAll
 	static void createTestPeople() {
-		testPeople = new ArrayList<>();
-		testPeople.add(new Person("JAMES", "HERNANDEZ", 22));
-		testPeople.add(new Person("ELIZABETH", "ANDERSON", 26));
-		testPeople.add(new Person("SARAH", "WALKER", 17));
-		testPeople.add(new Person("ROBERT", "SMITH", 17));
-		testPeople.add(new Person("DAVID", "ANDERSON", 17));
-		testPeople.add(new Person("DAVID", "CAMPBELL", 20));
-		testPeople.add(new Person("WILLIAM", "THOMPSON", 19));
-		testPeople.add(new Person("MARY", "MILLER", 22));
-		testPeople.add(new Person("RICHARD", "CLARK", 24));
-		testPeople.add(new Person("ELIZABETH", "JOHNSON", 19));
-		testPeople.add(new Person("RICHARD", "JOHNSON", 25));
-		testPeople.add(new Person("RICHARD", "BROWN", 27));
-		testPeople.add(new Person("DAVID", "DAVIS", 28));
-		testPeople.add(new Person("BARBARA", "SMITH", 25));
-		testPeople.add(new Person("JAMES", "HERNANDEZ", 22));
-		testPeople.add(new Person("JOSEPH", "BROWN", 24));
-		testPeople.add(new Person("BARBARA", "MILLER", 15));
-		testPeople.add(new Person("JOSEPH", "WHITE", 25));
-		testPeople.add(new Person("JOSEPH", "WILLIAMS", 18));
-		testPeople.add(new Person("THOMAS", "SMITH", 21));
-		testPeople.add(new Person("PATRICIA", "GARCIA", 26));
-		testPeople.add(new Person("SUSAN", "MARTINEZ", 19));
-		testPeople.add(new Person("JOSEPH", "MILLER", 19));
-		testPeople.add(new Person("JESSICA", "HERNANDEZ", 16));
-		testPeople.add(new Person("THOMAS", "DAVIS", 28));
-		testPeople.add(new Person("BARBARA", "RODRIGUEZ", 28));
-		testPeople.add(new Person("MARY", "CAMPBELL", 18));
-		testPeople.add(new Person("CHARLES", "WILLIAMS", 21));
-		testPeople.add(new Person("JAMES", "MOORE", 17));
-		testPeople.add(new Person("DAVID", "ANDERSON", 28));
-		testPeople.add(new Person("JOHN", "RODRIGUEZ", 17));
-		testPeople.add(new Person("MARY", "RODRIGUEZ", 26));
-		testPeople.add(new Person("WILLIAM", "HERNANDEZ", 24));
-		testPeople.add(new Person("PATRICIA", "MARTINEZ", 21));
-		testPeople.add(new Person("SUSAN", "BROWN", 18));
-		testPeople.add(new Person("JAMES", "ROBINSON", 22));
-		testPeople.add(new Person("JOSEPH", "JOHNSON", 23));
-		testPeople.add(new Person("ROBERT", "ROBINSON", 17));
-		testPeople.add(new Person("BARBARA", "WILLIAMS", 24));
-		testPeople.add(new Person("RICHARD", "MILLER", 26));
-		testPeople.add(new Person("MICHAEL", "SMITH", 21));
-		testPeople.add(new Person("MICHAEL", "CAMPBELL", 15));
-		testPeople.add(new Person("WILLIAM", "RODRIGUEZ", 25));
-		testPeople.add(new Person("JESSICA", "BROWN", 25));
-		testPeople.add(new Person("SARAH", "THOMPSON", 26));
-		testPeople.add(new Person("MARY", "WHITE", 19));
-		testPeople.add(new Person("JENNIFER", "JOHNSON", 19));
-		testPeople.add(new Person("MICHAEL", "WALKER", 16));
-		testPeople.add(new Person("LINDA", "RODRIGUEZ", 27));
-		testPeople.add(new Person("KAREN", "CAMPBELL", 19));
-		testPeople.add(new Person("BARBARA", "CLARK", 29));
-		testPeople.add(new Person("SUSAN", "WHITE", 28));
-		testPeople.add(new Person("ELIZABETH", "HERNANDEZ", 26));
-		testPeople.add(new Person("CHARLES", "SMITH", 16));
-		testPeople.add(new Person("KAREN", "BROWN", 21));
-		testPeople.add(new Person("ELIZABETH", "MOORE", 22));
-		testPeople.add(new Person("JOSEPH", "WALKER", 22));
-		testPeople.add(new Person("SARAH", "WALKER", 24));
-		testPeople.add(new Person("JENNIFER", "ROBINSON", 17));
-		testPeople.add(new Person("JAMES", "MARTINEZ", 23));
-		testPeople.add(new Person("DAVID", "JOHNSON", 24));
-		testPeople.add(new Person("BARBARA", "DAVIS", 29));
-		testPeople.add(new Person("LINDA", "HERNANDEZ", 25));
-		testPeople.add(new Person("LINDA", "MILLER", 28));
-		testPeople.add(new Person("MARY", "WILLIAMS", 16));
-		testPeople.add(new Person("ROBERT", "RODRIGUEZ", 28));
-		testPeople.add(new Person("JAMES", "MOORE", 16));
-		testPeople.add(new Person("LINDA", "CLARK", 18));
-		testPeople.add(new Person("JENNIFER", "BROWN", 29));
-		testPeople.add(new Person("CHARLES", "CLARK", 19));
-		testPeople.add(new Person("THOMAS", "THOMPSON", 15));
-		testPeople.add(new Person("SARAH", "WALKER", 22));
-		testPeople.add(new Person("JOSEPH", "DAVIS", 21));
-		testPeople.add(new Person("PATRICIA", "SMITH", 28));
-		testPeople.add(new Person("CHARLES", "MILLER", 17));
-		testPeople.add(new Person("DAVID", "SMITH", 29));
-		testPeople.add(new Person("LINDA", "CLARK", 18));
-		testPeople.add(new Person("SUSAN", "MOORE", 23));
-		testPeople.add(new Person("JOHN", "THOMPSON", 15));
-		testPeople.add(new Person("JOHN", "JOHNSON", 28));
-		testPeople.add(new Person("THOMAS", "MARTINEZ", 17));
-		testPeople.add(new Person("JESSICA", "ANDERSON", 26));
-		testPeople.add(new Person("MARY", "SMITH", 20));
-		testPeople.add(new Person("JOSEPH", "ROBINSON", 20));
-		testPeople.add(new Person("THOMAS", "RODRIGUEZ", 24));
-		testPeople.add(new Person("JESSICA", "WILLIAMS", 18));
-		testPeople.add(new Person("DAVID", "DAVIS", 28));
-		testPeople.add(new Person("JOHN", "ANDERSON", 27));
-		testPeople.add(new Person("BARBARA", "THOMPSON", 17));
-		testPeople.add(new Person("MICHAEL", "WALKER", 28));
-		testPeople.add(new Person("LINDA", "MARTINEZ", 22));
-		testPeople.add(new Person("MARY", "WHITE", 25));
-		testPeople.add(new Person("ROBERT", "YOUNG", 19));
-		testPeople.add(new Person("MICHAEL", "WHITE", 22));
-		testPeople.add(new Person("SUSAN", "SMITH", 17));
-		testPeople.add(new Person("BARBARA", "CLARK", 17));
-		testPeople.add(new Person("JOSEPH", "MILLER", 21));
-		testPeople.add(new Person("JOSEPH", "ROBINSON", 17));
-		testPeople.add(new Person("LINDA", "ROBINSON", 26));
-		testPeople.add(new Person("SARAH", "CAMPBELL", 18));
+		people = new ArrayList<>();
+		people.add(new Person("JAMES", "HERNANDEZ", 22));
+		people.add(new Person("ELIZABETH", "ANDERSON", 26));
+		people.add(new Person("SARAH", "WALKER", 17));
+		people.add(new Person("ROBERT", "SMITH", 17));
+		people.add(new Person("DAVID", "ANDERSON", 17));
+		people.add(new Person("DAVID", "CAMPBELL", 20));
+		people.add(new Person("WILLIAM", "THOMPSON", 19));
+		people.add(new Person("MARY", "MILLER", 22));
+		people.add(new Person("RICHARD", "CLARK", 24));
+		people.add(new Person("ELIZABETH", "JOHNSON", 19));
+		people.add(new Person("RICHARD", "JOHNSON", 25));
+		people.add(new Person("RICHARD", "BROWN", 27));
+		people.add(new Person("DAVID", "DAVIS", 28));
+		people.add(new Person("BARBARA", "SMITH", 25));
+		people.add(new Person("JAMES", "HERNANDEZ", 22));
+		people.add(new Person("JOSEPH", "BROWN", 24));
+		people.add(new Person("BARBARA", "MILLER", 15));
+		people.add(new Person("JOSEPH", "WHITE", 25));
+		people.add(new Person("JOSEPH", "WILLIAMS", 18));
+		people.add(new Person("THOMAS", "SMITH", 21));
+		people.add(new Person("PATRICIA", "GARCIA", 26));
+		people.add(new Person("SUSAN", "MARTINEZ", 19));
+		people.add(new Person("JOSEPH", "MILLER", 19));
+		people.add(new Person("JESSICA", "HERNANDEZ", 16));
+		people.add(new Person("THOMAS", "DAVIS", 28));
+		people.add(new Person("BARBARA", "RODRIGUEZ", 28));
+		people.add(new Person("MARY", "CAMPBELL", 18));
+		people.add(new Person("CHARLES", "WILLIAMS", 21));
+		people.add(new Person("JAMES", "MOORE", 17));
+		people.add(new Person("DAVID", "ANDERSON", 28));
+		people.add(new Person("JOHN", "RODRIGUEZ", 17));
+		people.add(new Person("MARY", "RODRIGUEZ", 26));
+		people.add(new Person("WILLIAM", "HERNANDEZ", 24));
+		people.add(new Person("PATRICIA", "MARTINEZ", 21));
+		people.add(new Person("SUSAN", "BROWN", 18));
+		people.add(new Person("JAMES", "ROBINSON", 22));
+		people.add(new Person("JOSEPH", "JOHNSON", 23));
+		people.add(new Person("ROBERT", "ROBINSON", 17));
+		people.add(new Person("BARBARA", "WILLIAMS", 24));
+		people.add(new Person("RICHARD", "MILLER", 26));
+		people.add(new Person("MICHAEL", "SMITH", 21));
+		people.add(new Person("MICHAEL", "CAMPBELL", 15));
+		people.add(new Person("WILLIAM", "RODRIGUEZ", 25));
+		people.add(new Person("JESSICA", "BROWN", 25));
+		people.add(new Person("SARAH", "THOMPSON", 26));
+		people.add(new Person("MARY", "WHITE", 19));
+		people.add(new Person("JENNIFER", "JOHNSON", 19));
+		people.add(new Person("MICHAEL", "WALKER", 16));
+		people.add(new Person("LINDA", "RODRIGUEZ", 27));
+		people.add(new Person("KAREN", "CAMPBELL", 19));
+		people.add(new Person("BARBARA", "CLARK", 29));
+		people.add(new Person("SUSAN", "WHITE", 28));
+		people.add(new Person("ELIZABETH", "HERNANDEZ", 26));
+		people.add(new Person("CHARLES", "SMITH", 16));
+		people.add(new Person("KAREN", "BROWN", 21));
+		people.add(new Person("ELIZABETH", "MOORE", 22));
+		people.add(new Person("JOSEPH", "WALKER", 22));
+		people.add(new Person("SARAH", "WALKER", 24));
+		people.add(new Person("JENNIFER", "ROBINSON", 17));
+		people.add(new Person("JAMES", "MARTINEZ", 23));
+		people.add(new Person("DAVID", "JOHNSON", 24));
+		people.add(new Person("BARBARA", "DAVIS", 29));
+		people.add(new Person("LINDA", "HERNANDEZ", 25));
+		people.add(new Person("LINDA", "MILLER", 28));
+		people.add(new Person("MARY", "WILLIAMS", 16));
+		people.add(new Person("ROBERT", "RODRIGUEZ", 28));
+		people.add(new Person("JAMES", "MOORE", 16));
+		people.add(new Person("LINDA", "CLARK", 18));
+		people.add(new Person("JENNIFER", "BROWN", 29));
+		people.add(new Person("CHARLES", "CLARK", 19));
+		people.add(new Person("THOMAS", "THOMPSON", 15));
+		people.add(new Person("SARAH", "WALKER", 22));
+		people.add(new Person("JOSEPH", "DAVIS", 21));
+		people.add(new Person("PATRICIA", "SMITH", 28));
+		people.add(new Person("CHARLES", "MILLER", 17));
+		people.add(new Person("DAVID", "SMITH", 29));
+		people.add(new Person("LINDA", "CLARK", 18));
+		people.add(new Person("SUSAN", "MOORE", 23));
+		people.add(new Person("JOHN", "THOMPSON", 15));
+		people.add(new Person("JOHN", "JOHNSON", 28));
+		people.add(new Person("THOMAS", "MARTINEZ", 17));
+		people.add(new Person("JESSICA", "ANDERSON", 26));
+		people.add(new Person("MARY", "SMITH", 20));
+		people.add(new Person("JOSEPH", "ROBINSON", 20));
+		people.add(new Person("THOMAS", "RODRIGUEZ", 24));
+		people.add(new Person("JESSICA", "WILLIAMS", 18));
+		people.add(new Person("DAVID", "DAVIS", 28));
+		people.add(new Person("JOHN", "ANDERSON", 27));
+		people.add(new Person("BARBARA", "THOMPSON", 17));
+		people.add(new Person("MICHAEL", "WALKER", 28));
+		people.add(new Person("LINDA", "MARTINEZ", 22));
+		people.add(new Person("MARY", "WHITE", 25));
+		people.add(new Person("ROBERT", "YOUNG", 19));
+		people.add(new Person("MICHAEL", "WHITE", 22));
+		people.add(new Person("SUSAN", "SMITH", 17));
+		people.add(new Person("BARBARA", "CLARK", 17));
+		people.add(new Person("JOSEPH", "MILLER", 21));
+		people.add(new Person("JOSEPH", "ROBINSON", 17));
+		people.add(new Person("LINDA", "ROBINSON", 26));
+		people.add(new Person("SARAH", "CAMPBELL", 18));
 	}
 
 	@BeforeAll
@@ -444,7 +444,7 @@ public class PersonCollectionUtilServiceTest {
 	@TestFactory
 	Stream<DynamicTest> testSelectPeopleUnderAgeFromStream() {
 		final Collection<Person> peopleUnderAge = PERSON_COLLECTION_UTIL_SERVICE
-				.selectPeopleUnderAge(testPeople, TEST_UNDER_AGE_VALUE);
+				.selectPeopleUnderAge(people, TEST_UNDER_AGE_VALUE);
 		return peopleUnderAge.stream()
 				.map(person -> DynamicTest.dynamicTest(TEST_AGE_VALUE_FOR_PERSON_MESSAGE + person,
 						() -> assertTrue(person.getAge() < TEST_UNDER_AGE_VALUE)));
@@ -453,18 +453,17 @@ public class PersonCollectionUtilServiceTest {
 	@Test
 	void testSortPeople() {
 		assertEquals(sortedPeople,
-				PERSON_COLLECTION_UTIL_SERVICE.sortPeople(testPeople, TEST_PERSON_COMPARATOR));
+				PERSON_COLLECTION_UTIL_SERVICE.sortPeople(people, TEST_PERSON_COMPARATOR));
 	}
 
 	@Test
 	void testSelectDistinctPeople() {
-		assertEquals(distinctPeople,
-				PERSON_COLLECTION_UTIL_SERVICE.selectDistinctPeople(testPeople));
+		assertEquals(distinctPeople, PERSON_COLLECTION_UTIL_SERVICE.selectDistinctPeople(people));
 	}
 
 	@Test
 	void testConvertIntoSurnameNameList() {
 		assertEquals(surnameNameList,
-				PERSON_COLLECTION_UTIL_SERVICE.convertIntoSurnameNameList(testPeople));
+				PERSON_COLLECTION_UTIL_SERVICE.convertIntoSurnameNameList(people));
 	}
 }

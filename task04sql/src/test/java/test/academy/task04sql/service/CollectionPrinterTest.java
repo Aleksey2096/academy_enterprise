@@ -49,10 +49,11 @@ public class CollectionPrinterTest {
 	@ParameterizedTest
 	@MethodSource("provideCollectionsForTestPrintCollection")
 	void testPrintCollection(final Collection<Person> people) {
-		final StringBuilder sb = new StringBuilder();
-		people.forEach(person -> sb.append(person).append(CARRIAGE_RETURN).append(STRING_RETURN));
+		final StringBuilder stringBuilder = new StringBuilder();
+		people.forEach(person -> stringBuilder.append(person).append(CARRIAGE_RETURN)
+				.append(STRING_RETURN));
 		COLLECTION_PRINTER.printCollection(people);
-		assertEquals(sb.toString(), out.toString());
+		assertEquals(stringBuilder.toString(), out.toString());
 	}
 
 	@AfterAll
