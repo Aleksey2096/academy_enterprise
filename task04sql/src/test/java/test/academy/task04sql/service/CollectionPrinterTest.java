@@ -15,7 +15,7 @@ import java.io.PrintStream;
 import java.util.Collection;
 import java.util.stream.Stream;
 
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -55,8 +55,8 @@ public class CollectionPrinterTest {
 		assertEquals(sb.toString(), out.toString());
 	}
 
-	@AfterEach
-	void restoreInitialOutStream() {
+	@AfterAll
+	static void restoreInitialOutStream() {
 		System.setOut(ORIGINAL_OUT);
 	}
 }
