@@ -19,12 +19,13 @@ public final class Runner {
 
 		try {
 			DaoService daoService = new DaoService();
-
-			// INSERT
-
 			Person person = new Person();
 			person.setName(TEST_NAME);
 			person.setSurname(TEST_SURNAME);
+			System.out.println(person);
+
+			// INSERT
+
 			System.out.println(INSERT_MESSAGE + daoService.create(person));
 
 			// SELECT

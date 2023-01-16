@@ -2,7 +2,7 @@ package by.academy.task05daoAnnotation.dao;
 
 import java.util.ResourceBundle;
 
-public class DatabaseProperty {
+public final class DatabaseProperty {
 	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle("data/database");
 
 	public static final String DRIVER_CLASS = RESOURCE_BUNDLE.getString("db.driverClass");

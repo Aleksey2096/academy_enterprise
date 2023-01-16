@@ -1,6 +1,6 @@
 package by.academy.task05daoAnnotation.dao;
 
-public class DatabaseQuery {
+public final class DatabaseQuery {
 	public static final String INSERT = "INSERT INTO %s(%s) VALUES(%s)";
 	public static final String SELECT = "SELECT %s FROM %s WHERE %s = ?";
 	public static final String UPDATE = "UPDATE %s SET %s WHERE %s = ?";
