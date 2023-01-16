@@ -37,9 +37,9 @@ public final class ObjectDao extends AbstractDao<Object> {
 			Class<?> cls = object.getClass();
 			checkIfAnnotated(cls);
 			String tableName = cls.getAnnotation(MyTable.class).name();
+			List<Field> annotatedFields = getAnnotatedFields(cls.getDeclaredFields());
 			Connection connection = getConnection();
 			String idColumnName = getPrimaryKeyColumnName(connection, tableName);
-			List<Field> annotatedFields = getAnnotatedFields(cls.getDeclaredFields());
 			Field idField = getIdField(cls.getDeclaredFields(), idColumnName);
 			annotatedFields.remove(idField);
 			List<Object> fieldValues = getFieldValues(annotatedFields, object);
@@ -149,8 +149,8 @@ public final class ObjectDao extends AbstractDao<Object> {
 			throw new DaoException(CLASS_ANNOTATION_EXCEPTION_MESSAGE);
 		}
 		Field[] fields = cls.getDeclaredFields();
-		for (int i = 0; i < fields.length; ++i) {
-			if (fields[i].isAnnotationPresent(MyColumn.class)) {
+		for (Field newField : fields) {
+			if (newField.isAnnotationPresent(MyColumn.class)) {
 				return;
 			}
 		}
@@ -170,10 +170,10 @@ public final class ObjectDao extends AbstractDao<Object> {
 
 	private List<Field> getAnnotatedFields(final Field[] fields) {
 		List<Field> annotatedFields = new ArrayList<>();
-		for (int i = 0; i < fields.length; ++i) {
-			if (fields[i].isAnnotationPresent(MyColumn.class)) {
-				fields[i].setAccessible(true);
-				annotatedFields.add(fields[i]);
+		for (Field newField : fields) {
+			if (newField.isAnnotationPresent(MyColumn.class)) {
+				newField.setAccessible(true);
+				annotatedFields.add(newField);
 			}
 		}
 		return annotatedFields;
@@ -181,11 +181,13 @@ public final class ObjectDao extends AbstractDao<Object> {
 
 	private Field getIdField(final Field[] fields, final String idColumnName) {
 		Field idField = null;
-		for (int i = 0; i < fields.length; ++i) {
-			if (fields[i].isAnnotationPresent(MyColumn.class)
-					&& fields[i].getAnnotation(MyColumn.class).name().equals(idColumnName)) {
-				fields[i].setAccessible(true);
-				idField = fields[i];
+		for (Field newField : fields) {
+			if (newField.isAnnotationPresent(MyColumn.class)
+					&& newField.getAnnotation(MyColumn.class).name()
+					.equals(idColumnName)) {
+				newField.setAccessible(true);
+				idField = newField;
+				break;
 			}
 		}
 		return idField;

@@ -8,9 +8,3 @@ CREATE TABLE person
     surname         VARCHAR(255)     NOT NULL,
     CONSTRAINT PK_person PRIMARY KEY (id)
 );
-INSERT INTO person(name,surname) VALUES
-('Jack','Moore'),
-('Bryan','White'),
-('William','Brown'),
-('Scott','Goldberg'),
-('Rick','Rolling');
