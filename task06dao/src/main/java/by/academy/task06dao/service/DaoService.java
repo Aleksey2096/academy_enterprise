@@ -57,6 +57,28 @@ public interface DaoService<T> {
 		}
 	}
 
+//	default public void update(final Object object) throws ServiceException {
+//	Connection connection = null;
+//	try {
+//		connection = DataSource.getInstance().getTransactionConnection();
+//		new PersonDaoImpl(connection).update(object);
+//		commit(connection);
+//	} catch (DaoException e) {
+//		try {
+//			rollback(connection);
+//		} catch (DaoException e1) {
+//			throw new ServiceException(e1);
+//		}
+//		throw new ServiceException(e);
+//	} finally {
+//		try {
+//			closeConnection(connection);
+//		} catch (DaoException e) {
+//			throw new ServiceException(e);
+//		}
+//	}
+//}
+
 	default public int delete(final Class<?> cls, final Serializable id) throws ServiceException {
 		Connection connection = null;
 		try {

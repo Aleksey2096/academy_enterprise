@@ -168,7 +168,8 @@ public abstract class AbstractDao<T> {
 	private String getPrimaryKeyColumnName(final Connection connection, final String tableName)
 			throws SQLException {
 		DatabaseMetaData metaData = connection.getMetaData();
-		ResultSet resultSet = metaData.getPrimaryKeys(null, null, tableName);
+		// .toUpperCase() - for h2 database tests
+		ResultSet resultSet = metaData.getPrimaryKeys(null, null, tableName.toUpperCase());
 		String idColumnName = null;
 		while (resultSet.next()) {
 			idColumnName = resultSet.getString(COLUMN_NAME);
@@ -190,8 +191,9 @@ public abstract class AbstractDao<T> {
 	private Field getIdField(final Field[] fields, final String idColumnName) {
 		Field idField = null;
 		for (Field newField : fields) {
-			if (newField.isAnnotationPresent(MyColumn.class)
-					&& newField.getAnnotation(MyColumn.class).name().equals(idColumnName)) {
+			if (newField.isAnnotationPresent(MyColumn.class) && newField
+					// .toLowerCase() - for h2 database tests
+					.getAnnotation(MyColumn.class).name().equals(idColumnName.toLowerCase())) {
 				newField.setAccessible(true);
 				idField = newField;
 				break;

@@ -1,0 +1,72 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog 
+xmlns="http://www.liquibase.org/xml/ns/dbchangelog" 
+xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" 
+xmlns:pro="http://www.liquibase.org/xml/ns/pro" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext 
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd 
+http://www.liquibase.org/xml/ns/pro 
+http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.0.xsd 
+http://www.liquibase.org/xml/ns/dbchangelog 
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+	<changeSet id="create_person_data" author="Aleksey Maksimenko">
+		<createTable tableName="person">
+			<column name="id" type="INTEGER" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" primaryKeyName="PK_person" />
+			</column>
+			<column name="name" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="surname" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		
+		<insert tableName="person">
+			<column name="name" value="Conrad"></column>
+			<column name="surname" value="Potter"></column>						
+		</insert>
+		<insert tableName="person">
+			<column name="name" value="Kathy"></column>
+			<column name="surname" value="Kirkham"></column>			
+		</insert>        
+		<insert tableName="person">
+			<column name="name" value="Alvin"></column>
+			<column name="surname" value="Greenwood"></column>			
+		</insert>        
+		<insert tableName="person">
+			<column name="name" value="Kelly"></column>
+			<column name="surname" value="Felderman"></column>			
+		</insert>        
+		<insert tableName="person">
+			<column name="name" value="Edward"></column>
+			<column name="surname" value="Williamson"></column>			
+		</insert>
+		<insert tableName="person">
+			<column name="name" value="Maria"></column>
+			<column name="surname" value="Webb"></column>			
+		</insert>		
+		<insert tableName="person">
+			<column name="name" value="Stanley"></column>
+			<column name="surname" value="Webb"></column>			
+		</insert>		
+		<insert tableName="person">
+			<column name="name" value="Alice"></column>
+			<column name="surname" value="Kingston"></column>			
+		</insert>		
+		<insert tableName="person">
+			<column name="name" value="Bradley"></column>
+			<column name="surname" value="Hagman"></column>			
+		</insert>		
+		<insert tableName="person">
+			<column name="name" value="Danielle"></column>
+			<column name="surname" value="Sadler"></column>			
+		</insert>		
+	    <rollback>
+	        <dropTable tableName="person"/>
+	    </rollback>		
+	</changeSet>
+        
+</databaseChangeLog>

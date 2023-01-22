@@ -15,3 +15,13 @@
 -update
 -delete
 -insert должны работать без изменения внутреней логики
+
+
+
+mvn liquibase:update (add test table and rows)
+
+mvn liquibase:rollback -Dliquibase.rollbackCount=1 (drop test table)
+
+mvn test (runs tests and creates jacoco report in target/site/jacoco/index.html)
+
+mvn site (creates checkstyle report in target/site/checkstyle.html)
