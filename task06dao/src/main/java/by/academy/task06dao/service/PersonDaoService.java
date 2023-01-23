@@ -1,11 +1,21 @@
 package by.academy.task06dao.service;
 
-import java.util.List;
-
 import by.academy.task06dao.entity.Person;
 
-public interface PersonDaoService extends DaoService<Person> {
-	List<Person> readByName(String name) throws ServiceException;
+import java.util.List;
 
-	List<Person> readBySurname(String surname) throws ServiceException;
+public interface PersonDaoService extends DaoService {
+    /**
+     * @param name person field value.
+     * @return people from database with concrete name.
+     * @throws ServiceException if SQLException or DaoException occurred.
+     */
+    List<Person> readByName(String name) throws ServiceException;
+
+    /**
+     * @param surname person field value.
+     * @return people from database with concrete surname.
+     * @throws ServiceException if SQLException or DaoException occurred.
+     */
+    List<Person> readBySurname(String surname) throws ServiceException;
 }

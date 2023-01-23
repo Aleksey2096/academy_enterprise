@@ -1,5 +1,26 @@
 package test.academy.task06dao.dao;
 
+import by.academy.task06dao.dao.AbstractDao;
+import by.academy.task06dao.dao.DaoException;
+import by.academy.task06dao.dao.impl.PersonDaoImpl;
+import by.academy.task06dao.entity.Person;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import test.academy.task06dao.TestConnection;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.stream.Stream;
+
 import static by.academy.task06dao.entity.Constant.ID_COLUMN_TITLE;
 import static by.academy.task06dao.entity.Constant.NAME_COLUMN_TITLE;
 import static by.academy.task06dao.entity.Constant.SURNAME_COLUMN_TITLE;
@@ -10,32 +31,10 @@ import static test.academy.task06dao.TestResource.CREATE_PERSON_TABLE_SQL;
 import static test.academy.task06dao.TestResource.DELETE_PERSON_TABLE_SQL;
 import static test.academy.task06dao.TestResource.SELECT_PERSON_BY_ID_SQL;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.stream.Stream;
-
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-
-import by.academy.task06dao.dao.AbstractDao;
-import by.academy.task06dao.dao.DaoException;
-import by.academy.task06dao.dao.impl.PersonDaoImpl;
-import by.academy.task06dao.entity.Person;
-import test.academy.task06dao.TestConnection;
-
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public final class AbstractDaoTest {
+final class AbstractDaoTest {
 	private static Connection connection;
-	private static AbstractDao<Person> abstractDao;
+	private static AbstractDao abstractDao;
 
 	@BeforeAll
 	static void createPersonData() throws DaoException {
@@ -131,8 +130,8 @@ public final class AbstractDaoTest {
 	@ParameterizedTest
 	@MethodSource("providePeopleForTestDelete")
 	@Order(4)
-	void testDelete(final int changedRows, final Class<Person> cls, final int id)
-			throws DaoException {
+	void testDelete(final int changedRows, final Class<Person> cls,
+					final int id) {
 		assertAll(() -> assertEquals(changedRows, abstractDao.delete(cls, id)),
 				() -> assertNull(selectById(id)));
 	}
@@ -169,7 +168,7 @@ public final class AbstractDaoTest {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				throw new DaoException(e);
+				e.printStackTrace();
 			}
 		}
 	}
