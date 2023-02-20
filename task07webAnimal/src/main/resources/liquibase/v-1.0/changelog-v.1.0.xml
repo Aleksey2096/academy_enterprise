@@ -1,0 +1,128 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="create_animal_data" author="Aleksey">
+
+        <createTable tableName="animal">
+            <column name="id" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="PK_animal"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="weight" type="DECIMAL(6,2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <insert tableName="animal">
+            <column name="name" value="Mountain Beaver"/>
+            <column name="weight" value="1.350"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Cow"/>
+            <column name="weight" value="465.00"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Grey Wolf"/>
+            <column name="weight" value="36.330"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Goat"/>
+            <column name="weight" value="27.660"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Guinea Pig"/>
+            <column name="weight" value="1.040"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Asian Elephant"/>
+            <column name="weight" value="2547.000"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Donkey"/>
+            <column name="weight" value="187.100"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Horse"/>
+            <column name="weight" value="521.000"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Cat"/>
+            <column name="weight" value="3.300"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Giraffe"/>
+            <column name="weight" value="529.000"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Gorilla"/>
+            <column name="weight" value="207.000"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Human"/>
+            <column name="weight" value="62.000"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Mole"/>
+            <column name="weight" value="0.122"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="African Elephant"/>
+            <column name="weight" value="6654.000"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Triceratops"/>
+            <column name="weight" value="9400.000"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Rhesus Monkey"/>
+            <column name="weight" value="6.800"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Kangaroo"/>
+            <column name="weight" value="35.000"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Hamster"/>
+            <column name="weight" value="0.120"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Mouse"/>
+            <column name="weight" value="0.023"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Rabbit"/>
+            <column name="weight" value="2.500"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Sheep"/>
+            <column name="weight" value="55.500"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Pig"/>
+            <column name="weight" value="192.000"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Jaguar"/>
+            <column name="weight" value="100.000"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Chimpanzee"/>
+            <column name="weight" value="52.160"/>
+        </insert>
+        <insert tableName="animal">
+            <column name="name" value="Rat"/>
+            <column name="weight" value="0.280"/>
+        </insert>
+
+        <rollback>
+            <dropTable tableName="animal"/>
+        </rollback>
+
+    </changeSet>
+
+</databaseChangeLog>
