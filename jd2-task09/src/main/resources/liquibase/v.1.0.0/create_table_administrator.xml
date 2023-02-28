@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="create-administrator-table-liquibase" author="doncoffee">
+<!--        <createTable tableName="administrator">-->
+<!--            <column name="administrator_id" type="int" autoIncrement="true">-->
+<!--                <constraints primaryKey="true"/>-->
+<!--            </column>-->
+<!--        </createTable>-->
+        <sql>
+            create table assignment09.administrator
+            (
+                administrator_id int auto_increment
+                    primary key
+            );
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="create-course-table-liquibase" author="doncoffee">
+<!--        <createTable tableName="course">-->
+<!--            <column name="course_id" type="int" autoIncrement="true">-->
+<!--                <constraints primaryKey="true"/>-->
+<!--            </column>-->
+<!--            <column name="administrator_id" type="int">-->
+<!--                <constraints foreignKeyName="fk_administrator_id" references="assignment09.administrator (administrator_id)"/>-->
+<!--            </column>-->
+<!--            <column name="teacher_id" type="int">-->
+<!--                <constraints foreignKeyName="fk_teacher_id" references="assignment09.teacher (teacher_id)"/>-->
+<!--            </column>-->
+<!--        </createTable>-->
+        <sql>
+            create table assignment09.course
+            (
+                course_id        int auto_increment
+                    primary key,
+                administrator_id int null,
+                constraint FK6vxifbax9ydyncxff8s1fbljc
+                    foreign key (administrator_id) references assignment09.administrator (administrator_id)
+            );
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

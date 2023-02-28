@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="create-student_course-table-liquibase" author="doncoffee">
+<!--        <createTable tableName="student_course">-->
+<!--            <column name="student_id" type="int">-->
+<!--                <constraints primaryKey="true" nullable="false" foreignKeyName="fkey_student_id" references="assignment09.student (student_id)"/>-->
+<!--            </column>-->
+<!--            <column name="course_id" type="int">-->
+<!--                <constraints primaryKey="true" nullable="false" foreignKeyName="fk_course_id" references="assignment09.course (course_id)"/>-->
+<!--            </column>-->
+<!--        </createTable>-->
+        <sql>
+            create table assignment09.student_course
+            (
+                student_id int not null,
+                course_id  int not null,
+                primary key (student_id, course_id),
+                constraint FKpwtumr5ofgydxbuhmvdql4fye
+                    foreign key (student_id) references assignment09.student (student_id),
+                constraint FKtao0ysp4xfmi9dlxc10ku58qq
+                    foreign key (course_id) references assignment09.course (course_id)
+            );
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
