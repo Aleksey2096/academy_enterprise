@@ -1,0 +1,147 @@
+:root {
+    --lightGrey: #EBECF0;
+    --middleGrey: #BABECC;
+    --darkGrey: #61677C;
+    --white: #FFF;
+    --grayWhite: #f9fafb;
+    --red: #AE1100;
+}
+
+body, html {
+    background-color: var(--lightGrey);
+    font-family: "Montserrat", sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 3% auto auto auto;
+}
+
+table td {
+    padding: 0 80px;
+}
+
+table thead td {
+    background-color: var(--darkGrey);
+    color: var(--white);
+    font-weight: bold;
+    font-size: 8px;
+    border: 1px solid var(--darkGrey);
+}
+
+table tbody td {
+    color: var(--darkGrey);
+    border: 1px solid var(--lightGrey);
+}
+
+table tbody tr {
+    background-color: var(--grayWhite);
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: var(--white);
+}
+
+body, p, input, select, textarea, button.red {
+    letter-spacing: -0.2px;
+}
+
+.emptyList {
+    text-align: center;
+    color: var(--red);
+    margin: 5% auto auto auto;
+}
+
+.addForm {
+    padding: 16px;
+    width: 320px;
+    margin: 0 auto;
+}
+
+button.red {
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+    border-radius: 320px;
+    padding: 16px;
+    background-color: var(--lightGrey);
+    text-shadow: 1px 1px 0 var(--white);
+}
+
+label {
+    display: block;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+input:focus {
+    box-shadow: inset 1px 1px 2px var(--middleGrey), inset -1px -1px 2px var(--white);
+}
+
+button.red {
+    color: var(--darkGrey);
+    box-shadow: -5px -5px 20px var(--white), 5px 5px 20px var(--middleGrey);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+button.red:hover {
+    box-shadow: -2px -2px 5px var(--white), 2px 2px 5px var(--middleGrey);
+}
+
+button.red:active {
+    box-shadow: inset 1px 1px 2px var(--middleGrey), inset -1px -1px 2px var(--white);
+}
+
+button.red .icon {
+    margin-right: 8px;
+}
+
+button.red.unit .icon {
+    margin-right: 0;
+}
+
+button.red {
+    display: block;
+    width: 100%;
+    color: var(--red);
+}
+
+.input-group label {
+    margin: 0;
+    flex: 1;
+}
+
+.sortAnchor {
+    color: var(--darkGrey);
+    text-decoration: none;
+    margin: 0 0.5em;
+}
+
+.sortAnchor:hover {
+    color: var(--red);
+}
+
+.searchInput {
+    width: 100px;
+}
+
+.searchForm {
+    margin-block-end: 0;
+}
+
+th {
+    font-size: 120%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+tbody > tr > :nth-child(1), tbody > tr > :nth-child(5), tbody > tr > :nth-child(6) {
+    padding: 1px 20px;
+}
+
+.searchLabel {
+    margin-bottom: 0;
+    display: inline;
+}
