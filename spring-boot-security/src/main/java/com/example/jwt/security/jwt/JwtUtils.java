@@ -1,11 +1,11 @@
 package com.example.jwt.security.jwt;
 
-import java.util.Date;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-
-import com.example.jwt.security.services.UserDetailsImpl;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.SignatureException;
+import io.jsonwebtoken.UnsupportedJwtException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +13,9 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.WebUtils;
 
-import io.jsonwebtoken.*;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 @Component
 public class JwtUtils {
@@ -33,8 +35,13 @@ public class JwtUtils {
         return cookie != null ? cookie.getValue() : null;
     }
 
-    public ResponseCookie generateJwtCookie(UserDetailsImpl userPrincipal) {
-        String jwt = generateTokenFromUsername(userPrincipal.getUsername());
+    public ResponseCookie generateJwtCookie(String username) {
+        String jwt = Jwts.builder()
+                .setSubject(username)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
+                .signWith(SignatureAlgorithm.HS512, jwtSecret)
+                .compact();
         return ResponseCookie.from(jwtCookie, jwt).path("/api").maxAge(24 * 60 * 60).httpOnly(true)
                 .build();
     }
@@ -62,16 +69,6 @@ public class JwtUtils {
         } catch (IllegalArgumentException e) {
             logger.error("JWT claims string is empty: {}", e.getMessage());
         }
-
         return false;
-    }
-
-    public String generateTokenFromUsername(String username) {
-        return Jwts.builder()
-                .setSubject(username)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
-                .signWith(SignatureAlgorithm.HS512, jwtSecret)
-                .compact();
     }
 }
