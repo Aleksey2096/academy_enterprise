@@ -1,14 +1,15 @@
 package com.example.jwt.controllers;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import javax.validation.Valid;
-
+import com.example.jwt.models.ERole;
+import com.example.jwt.models.Role;
+import com.example.jwt.models.User;
+import com.example.jwt.payload.request.LoginRequest;
+import com.example.jwt.payload.request.SignupRequest;
+import com.example.jwt.payload.response.MessageResponse;
+import com.example.jwt.payload.response.UserInfoResponse;
 import com.example.jwt.repository.RoleRepository;
 import com.example.jwt.repository.UserRepository;
+import com.example.jwt.security.jwt.JwtUtils;
 import com.example.jwt.security.services.UserDetailsImpl;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
@@ -25,14 +26,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.jwt.models.ERole;
-import com.example.jwt.models.Role;
-import com.example.jwt.models.User;
-import com.example.jwt.payload.request.LoginRequest;
-import com.example.jwt.payload.request.SignupRequest;
-import com.example.jwt.payload.response.UserInfoResponse;
-import com.example.jwt.payload.response.MessageResponse;
-import com.example.jwt.security.jwt.JwtUtils;
+import javax.validation.Valid;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -66,7 +64,7 @@ public class AuthController {
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
-        ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
+        ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails.getUsername());
 
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
